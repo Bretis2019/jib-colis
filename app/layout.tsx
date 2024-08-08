@@ -1,8 +1,21 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { cn } from '@/lib/utils'
+import './globals.css'
+import {Metadata} from "next";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Arimo } from 'next/font/google'
+import { Rubik } from 'next/font/google'
+
+const fontHeading = Rubik({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-heading',
+})
+
+const fontBody = Arimo({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +29,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <body
+        className={cn(
+            'antialiased',
+            fontHeading.variable,
+            fontBody.variable
+        )}
+    >{children}</body>
     </html>
   );
 }
